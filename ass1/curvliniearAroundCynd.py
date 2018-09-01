@@ -6,12 +6,12 @@ def z(i,j,k):
 	return (20./7.) * k
 
 def x(i,j,k):
-	distFromCenter = 5 + i
+	distFromCenter = 5 + (5./4.)*i
 	angle = alpha*j
 	return distFromCenter*np.cos(angle)
 
 def y(i,j,k):
-	distFromCenter = 5 + i
+	distFromCenter = 5 + (5./4.)*i
 	angle = alpha * j
 	return distFromCenter * np.sin(angle)
 
@@ -39,4 +39,6 @@ if __name__ == "__main__":
 	ax = fig.add_subplot(111, projection='3d')
 	ax.scatter(plotXs, plotYs, plotZs)
 	plt.show()
+
+
 

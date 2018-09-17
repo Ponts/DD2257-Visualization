@@ -21,28 +21,31 @@ def triPolate(fs, x, z, y):
 	return c
 
 def backToFront(C, a):
-	c = C[-1]
-	for i in reversed(range(len(C)-1)):
+	c = 0.
+	for i in reversed(range(len(C))):
 		print(i)
 		c = (1-a[i])*c + a[i]*C[i]
 	return c
 
 def frontToBack(C,A):
-	c = C[0]
+	c = 0.
 	a = 0.
-	for i in range(1,len(C)):
+	for i in range(len(C)):
 		c = c + (1-a)*A[i]*C[i]
 		print(a)
 		a = a + (1-a)*A[i]
+		if a > 0.99:
+			print("We done at index " + str(i))
+			break
 	return c, a
 
 
 if __name__ == "__main__":
-	print(getCord(3,-2,0))
-	fs = [2,2,-2,1,3,-4,1,-2]
+	#print(getCord(3,2,0))
+	fs = [-1,2,-2,1,4,-2,1,-2]
 	#print(triPolate(fs,1/3,1/3,0.))
-	print(getAsympts(-1,2,1,-2))
-	print(triPolate(fs,1/3,0.5,0))
-	#Cs = [0.,2.,4.,2.,8.,7.,9.,5.,1.]
-	#As = [1/6,1/3,1/6,1/6,1/2,1/6,1/3,1/6,1/6]
-	#print(frontToBack(Cs,As))
+	#print(getAsympts(2,-4,-2,1))
+	#print(triPolate(fs,1,0,0))
+	Cs = [0.,2.,4.,2.,8.,7.,9.,5.,1.]
+	As = [1./6,1./3,1./6,1./6,1./2,1./6,1./3,1./6,1./6]
+	print(frontToBack(Cs,As))
